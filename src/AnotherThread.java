@@ -27,7 +27,7 @@ public class AnotherThread extends Thread {
 								//parameter for nanoseconds
 		}catch(InterruptedException e) {
 			System.out.println(ANSI_BLUE + "Another thread woke me up");//To be executed if another thread wakes up this thread
-			return;
+			return;//terminates thread if interrupted
 		}
 		
 	//	The method below executes after 3 seconds to demonstrate thread performing the sleep task if the InterruptedException is not thrown

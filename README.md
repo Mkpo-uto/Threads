@@ -52,5 +52,10 @@ and it will terminate. There are two ways for threads to notice they have been i
 in the run() method. When the run() method does not call any method that throws InterruptedException it should call the Interrupted method
 periodically to check wether it has been interrupted and that method will return true when another thread has interrupted. One thread 
 interrupts another by calling interrupt method on the instance of the thread it wants to interrupt meaning it needs a reference to the
-thread instance to be able to call the interrupt method on it.   
+thread instance to be able to call the interrupt method on it.  
+10. Threads can be woken up from their sleep periodically to check if there is any work for it to do. In a scenario where we know a thread
+can't continue to execute until another thread is terminated e.g. we might know there might not be any data to process until the thread that 
+is fetching the data has finished executing. In this scenario, rather than waking up the thread periodically to see if there is any data we can
+join the thread to the thread that is fetching the data. When we join a thread to a second thread, the first thread will wait for the second 
+thread to terminate and then it will continue to execute.  
 
