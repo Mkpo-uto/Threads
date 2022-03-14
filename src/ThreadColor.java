@@ -1,4 +1,8 @@
-
+/*
+ This class uses the unix code so it does not work on windows native console.
+It does work in IntelliJ Idea. These codes must be prepended in the display statement
+to work properly in IntelliJ IDEA. 
+*/
 public class ThreadColor {
 
 	public static final String ANSI_RESET = "\u001B[0m";
