@@ -7,10 +7,13 @@ public class Main {
 //	After the main thread writes to the console using the statement above
 //we create an instance of the AnotherThread class we just created below
 		Thread anotherThread = new AnotherThread();
-//		anotherThread.setName("== Another Thread ==");
+//Setting the thread name is used to test output of calling run() method on thread instance instead of start()		
+		anotherThread.setName("== Another Thread ==");
 //Call the start() method on the newly created AnotherThread subclass instance to get the JVM to
 //invoke the run() method overriden in the class		
-		anotherThread.start();
+		anotherThread.start(); //after inserting line 11 - anotherThread.setName(String name), this method displays
+								//the output Hello from ===== Another Thread =====
+		//anotherThread.run(); displays the output Hello from main
 
 // Anonymous classes are better, easily configured and can be created to run threads in place of 
 //named classes if you intend to only run the thread once whereas if you tend to run the same code 
@@ -27,21 +30,32 @@ public class Main {
 		
 //Upon running the anonymous clas thread the output displays the Main thread first, the AnotherThread second, the Main thread second call and 
 //finally the anonymous class thread output showing the autonomy of the JVM over which thread is scheduled to run first
-//		Thread myRunnableThread = new Thread(new MyRunnable());
-//		Thread myRunnableThread = new Thread(new MyRunnable() {
-//			@Override
-//			public void run() {
-//				//super.run();
-//				System.out.println(ThreadColor.ANSI_RED + "Hello from the anonymous class's implementation of run()");
+
+
+//To implement MyRunnable thread class we create an instance of the Thread class not the subclass and pass in 
+//an instance of the MyRunnable class to the Thread class constructor and then class the Thread class instance
+//start() method as doen previously
+		Thread myRunnableThread = new Thread(new MyRunnable());
+		myRunnableThread.start();
+
+//Similar to when creating threads using a subclass we can also have an anonymous class implementation of MyRunnable
+//class and pass its instance to the Thread class constructor		
+		Thread myRunnableThread = new Thread(new MyRunnable() {
+			@Override
+			public void run() {
+//If you use super.run() method as written below the output is the contents of the run() method overriden in MyRunnable class				
+				//super.run();
+				//Statement is displayed when super.run() is commented out
+				System.out.println(ThreadColor.ANSI_RED + "Hello from the anonymous class's implementation of run()");
 //				try {
 //					anotherThread.join(2000);
 //					System.out.println("AnotherThread terminated,or timed out so I'm running again");
 //				} catch(InterruptedException e) {
 //					System.out.println("I couldn't wait after all. I was interrupted");
 //				}
-//			}
-//		});
-//		myRunnableThread.start();
+			}
+		});
+		
 		//anotherThread.interrupt();
 //	This print statement below calls the main thread again demonstrating the autonomy of the JVM and OS over which thread
 //  is scheduled to run first as the main thread runs twice because the thread we created runs in my output but note this might
