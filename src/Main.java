@@ -56,7 +56,7 @@ public class Main {
 			}
 		});
 		
-		//anotherThread.interrupt();
+		anotherThread.interrupt(); // this line of code prints out to the console the output 'Another thread interrupted me'
 //	This print statement below calls the main thread again demonstrating the autonomy of the JVM and OS over which thread
 //  is scheduled to run first as the main thread runs twice because the thread we created runs in my output but note this might
 // vary on your OS and the JVM. While it is up to the OS and JVM to schedule when a thread runs we can attempt to influence that 
