@@ -10,7 +10,7 @@ public class Main {
 //Setting the thread name is used to test output of calling run() method on thread instance instead of start()		
 		anotherThread.setName("== Another Thread ==");
 //Call the start() method on the newly created AnotherThread subclass instance to get the JVM to
-//invoke the run() method overriden in the class		
+//invoke the run() method overridden in the class		
 		anotherThread.start(); //after inserting line 11 - anotherThread.setName(String name), this method displays
 								//the output Hello from ===== Another Thread =====
 		//anotherThread.run(); displays the output Hello from main
@@ -28,13 +28,13 @@ public class Main {
 			}
 		}.start();
 		
-//Upon running the anonymous clas thread the output displays the Main thread first, the AnotherThread second, the Main thread second call and 
+//Upon running the anonymous class thread the output displays the Main thread first, the AnotherThread second, the Main thread second call and 
 //finally the anonymous class thread output showing the autonomy of the JVM over which thread is scheduled to run first
 
 
 //To implement MyRunnable thread class we create an instance of the Thread class not the subclass and pass in 
 //an instance of the MyRunnable class to the Thread class constructor and then class the Thread class instance
-//start() method as doen previously
+//start() method as done previously
 		Thread myRunnableThread = new Thread(new MyRunnable());
 		myRunnableThread.start();
 
@@ -43,7 +43,7 @@ public class Main {
 		Thread myRunnableThread = new Thread(new MyRunnable() {
 			@Override
 			public void run() {
-//If you use super.run() method as written below the output is the contents of the run() method overriden in MyRunnable class				
+//If you use super.run() method as written below the output is the contents of the run() method overridden in MyRunnable class				
 				//super.run();
 				//Statement is displayed when super.run() is commented out
 				System.out.println(ThreadColor.ANSI_RED + "Hello from the anonymous class's implementation of run()");
